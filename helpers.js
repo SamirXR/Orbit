@@ -12,7 +12,62 @@ function difference(x, y) {
 
 
 
-// Colour palette helpers
+// Seed helpers
+
+var workingSeed;
+
+var seedRange = 10000;
+
+function initSeedSystem(seed) {
+    workingSeed = seed;
+}
+
+function generateSeed() {
+	var result = Math.floor(Math.random() * seedRange); // This is the only place where Math.random should be used. After the seed is generated, use random() instead.
+    console.log("SEED: ", result);
+	return result;
+}
+
+
+
+// Random number helpers
+
+function random() {
+    var x = Math.sin(workingSeed++) * seedRange;
+    return x - Math.floor(x);
+}
+
+function randomBetween(min, max) {
+	// TODO: don't assume it's an int
+	var range = max - min;
+	var result = Math.floor(random() * range) + min;
+	return result;
+}
+
+function pureRandomBetween(min, max) { // a random not in the seed system
+	// TODO: don't assume it's an int
+	var range = max - min;
+	var result = Math.floor(Math.random() * range) + min;
+	return result;
+}
+
+function randomSign() {
+	// returns 1 or -1, randomly
+	if ( random() <= 0.5 ) {
+		return -1;
+	} else {
+		return 1;
+	}
+}
+
+function randomTinyVariation(startingPoint) {
+	var random = random();
+	return (startingPoint*random) * randomSign();
+}
+
+
+
+// Colour helpers
 
 function getNeonColour(variant = randomBetween(1, 6)) {
     
@@ -54,79 +109,73 @@ function getNeonColour(variant = randomBetween(1, 6)) {
     return colour;
 }
 
-
-
-
-// Random number helpers, including seeding
-
-var workingSeed;
-var seedRange = 10000;
-
-function initSeedSystem(seed) {
-    workingSeed = seed;
-}
-
-
-function generateSeed() {
-	var result = Math.floor(Math.random() * seedRange); // This is the only place where Math.random should be used. After the seed is generated, use random() instead.
-    console.log("SEED: ", result);
-	return result;
-}
-
-
-function random() {
-    var x = Math.sin(workingSeed++) * seedRange;
-    return x - Math.floor(x);
-}
-
-
-
-function randomBetween(min, max) {
-	// TODO: don't assume it's an int
-	var range = max - min;
-	var result = Math.floor(random() * range) + min;
-	return result;
-}
-
-function pureRandomBetween(min, max) { // a random not in the seed system
-	// TODO: don't assume it's an int
-	var range = max - min;
-	var result = Math.floor(Math.random() * range) + min;
-	return result;
-}
-
-
-function randomSign() {
-	// returns 1 or -1, randomly
-	if ( random() <= 0.5 ) {
-		return -1;
-	} else {
-		return 1;
-	}
-}
-
-function randomTinyVariation(startingPoint) {
-	var random = random();
-	return (startingPoint*random) * randomSign();
-}
-
-function randomColour() {
+function randomColourNumber() {
 	return randomBetween(0, 255);
 }
 
-
-function randomMidColour() {
+function randomMidColourNumber() {
 	return randomBetween(70, 200);
 }
 
-function randomDarkColour() {
+function randomDarkColourNumber() {
 	return randomBetween(0, 100);
 }
 
-function randomLightColour() {
+function randomLightColourNumber() {
 	return randomBetween(200, 255);
 }
 
+function randomColour() {
+  var r = randomColourNumber();
+  var g = randomColourNumber();
+  var b = randomColourNumber();
+  var colour = {
+    r: r,
+    g: g,
+    b: b
+  }
+  return colour;
+}
+
+function randomMidColour() {
+  var r = randomMidColourNumber();
+  var g = randomMidColourNumber();
+  var b = randomMidColourNumber();
+  var colour = {
+    r: r,
+    g: g,
+    b: b
+  }
+  return colour;
+}
+
+function randomDarkColour() {
+  var r = randomDarkColourNumber();
+  var g = randomDarkColourNumber();
+  var b = randomDarkColourNumber();
+  var colour = {
+    r: r,
+    g: g,
+    b: b
+  }
+  return colour;
+}
+
+function randomLightColour() {
+  var r = randomLightColourNumber();
+  var g = randomLightColourNumber();
+  var b = randomLightColourNumber();
+  var colour = {
+    r: r,
+    g: g,
+    b: b
+  }
+  return colour;
+}
+
+
+
+// Other helpers
 
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
@@ -146,5 +195,4 @@ function shuffle(array) {
 
   return array;
 }
-
 

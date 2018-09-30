@@ -1,13 +1,13 @@
 
 /* Outer */
 #canvas-container {
-  width: 100%;
   margin: 2rem 0;
+  width: 100%;
 }
 
 /* Inner */
 #canvas {
-  width: 100%;
   border: 2px solid #61d9a2;
   background-color: #f6f6f6;
+  max-width: 100%;
 }

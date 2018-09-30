@@ -7,10 +7,7 @@ var initialSeed, seed;
 var canvasID = "canvas";
 var ctx, canvas, canvasSize;
 var bg;
-
 var dt, currentTimestep, paused, maxTimesteps;
-
-
 
 
 
@@ -19,13 +16,34 @@ function clearCanvas() {
 }
 
 
+
 function setupBackground() {
- 
   bg = {
 		r: randomBetween(0,255),
 		g: randomBetween(0,255),
 		b: randomBetween(0,255),
+	};  
+}
+
+
+function setupAll() {
+ 
+  // Base variable setup
+	dt = 1;
+	currentTimestep = 1;
+	paused = false;
+	maxTimesteps = 50000;
+    
+   canvasSize = {
+		width: 2000,
+		height: 800
 	};
+  
+	var container = $("#canvas-container");
+	canvas.width = canvasSize.width;
+	canvas.height = canvasSize.height;
+  
+  setupBackground();
   
 }
 
@@ -49,7 +67,7 @@ function init(seed = generateSeed()) {
   ctx.translate(0, 0);
   ctx.moveTo(0, 0);
   
-  setupBackground();
+  setupAll();
 
 	setupSmiles(seed, dt, currentTimestep, paused, maxTimesteps, canvasSize, canvas);
   
@@ -57,7 +75,7 @@ function init(seed = generateSeed()) {
 	clearCanvas(ctx);
   ctx.translate(canvasSize.width/2, canvasSize.height/2);
 
-  window.requestAnimationFrame(main);
+  //window.requestAnimationFrame(main);
   
   //drawBackgroundGradient(0.3);
   drawBackground(0.9);
