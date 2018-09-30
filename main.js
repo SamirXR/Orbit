@@ -3,10 +3,12 @@
 
 // Base variables
 
-var initialSeed;
+var initialSeed, seed;
 var canvasID = "canvas";
 var ctx, canvas, canvasSize;
-var bg = {r: 0, g: 0, b: 0};
+var bg;
+
+var dt, currentTimestep, paused, maxTimesteps;
 
 
 
@@ -14,6 +16,17 @@ var bg = {r: 0, g: 0, b: 0};
 
 function clearCanvas() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+
+function setupBackground() {
+ 
+  bg = {
+		r: randomBetween(0,255),
+		g: randomBetween(0,255),
+		b: randomBetween(0,255),
+	};
+  
 }
 
 
@@ -35,21 +48,24 @@ function init(seed = generateSeed()) {
 	ctx = canvas.getContext('2d');
   ctx.translate(0, 0);
   ctx.moveTo(0, 0);
+  
+  setupBackground();
 
-	/*setup(seed);
-    
+	setupSmiles(seed, dt, currentTimestep, paused, maxTimesteps, canvasSize, canvas);
+  
     
 	clearCanvas(ctx);
   ctx.translate(canvasSize.width/2, canvasSize.height/2);
 
   window.requestAnimationFrame(main);
-  */
-
+  
   //drawBackgroundGradient(0.3);
   drawBackground(0.9);
   
 
 }
+
+
 
 
 
