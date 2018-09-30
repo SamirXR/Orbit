@@ -1,10 +1,12 @@
-/* CSS files add styling rules to your content */
+/* General */
 
 body {
   font-family: "K2D", "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
-  margin: 2em;
+  margin: 0;
 }
 
+
+/* Containers */
 
 .container {
   width: 90%;
@@ -14,6 +16,27 @@ body {
 }
 
 
+/* Headings */
+
+h1 {
+  displa
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #61d9a2;
+}
 
 /* Coloured sections */
-.
+
+.bg-blue {
+  background-color: #281483;
+  color: #fff;
+}
+
+.bg-white {
+  background-color: #f9f9fa;
+  color: #333;
+}
+
+.bg-black {
+  background-color: #121112;
+  color: #efefef;
+}

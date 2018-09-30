@@ -1,0 +1,13 @@
+
+/* Outer */
+#canvas-container {
+  width: 100%;
+  margin-bottom: 2rem; 
+}
+
+/* Inner */
+#canvas {
+  width: 100%;
+  border: 2px solid #61d9a2;
+  background-color: #f6f6f6;
+}

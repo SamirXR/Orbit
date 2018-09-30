@@ -10,6 +10,7 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/canvas.css">
     
     <!-- JavaScript -->
     <script src="/script.js" defer></script>
@@ -18,15 +19,21 @@
     <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
     
   </head>  
-  <body>
+  <body class="bg-blue">
     
     <main>
     
       
       
-      <section class="bg-blue">
+      <section>
         <div class="container">
           <h1>n–schedé</h1>
+          
+          <p>
+            Template: none<br/>
+            Seed: <span id="seed-label">not set
+          </p>
+          
           
           <div id="canvas-container">
             <canvas id="canvas"></canvas>
