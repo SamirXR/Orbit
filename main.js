@@ -1,6 +1,7 @@
 // Base variables
 
 var projectName = "Template";
+var projectVersion = 1;
 
 var seed;
 var canvasID = "canvas";
@@ -68,16 +69,36 @@ function init(seed) {
   ctx.translate(0, 0);
   ctx.moveTo(0, 0);
   
-  setupAll();
-    
+  setupAll();    
 	clearCanvas(ctx);
-  //ctx.translate(canvasSize.width/2, canvasSize.height/2);
 
   drawBackground(1);  
 
 }
 
 
+
+function draw() {
+  
+  drawBackground(0.001);
+  
+  drawSmiles();
+  
+}
+
+
+
+function update() {
+  currentTimestep += 1;
+    
+  if ( currentTimestep % 1 == 0 ) {
+      updateSmiles(dt, currentTimestep, paused);
+  }
+
+  if ( currentTimestep > maxTimesteps ) {
+      paused = true;
+  }  
+}
 
 
 
@@ -91,5 +112,11 @@ $(document).ready(function() {
   
   $("#seed-label").html(seed);
   $("#project-name").html(projectName);
+  $("#project-version").html(projectVersion);
+  
+  $("#reseed").click(function() {
+    // TODO: reseed without refreshing whole page
+    window.location.href = window.location.pathname + window.location.search + window.location.hash;
+  });
   
 });

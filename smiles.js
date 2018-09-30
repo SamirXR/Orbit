@@ -16,14 +16,14 @@ function setupSmiles(seed, maxTimesteps, canvasSize, canvas) {
   maxTimesteps = maxTimesteps;
   canvasSize = canvasSize;
   canvas = canvas;
-    
+  
 }
-
 
 
 function updateSmiles(dt, currentTimestep, paused) {
-  
+  console.log("update smiles");
 }
+
 
 function drawSmiles() {
   
