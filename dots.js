@@ -1,6 +1,3 @@
-// Metadata
-var version = 1;
-
 // Global variables
 // TODO: handle these better
 var seed, maxTimesteps, ctx, canvasSize, canvas;
@@ -14,13 +11,14 @@ function drawMetadata() {
 }
 
 function createDot() {
+  
   var dot = {
     size: 1,
     opacity: randomBetween(4, 9) / 10,
     colour: randomNeonColour(),
     pos: {
       x: 0,
-      y: canvasSize.height/2
+      y: randomBetween(canvasSize.height/2, canvasSize.height/4),
     },
     colourVariation: randomBetween(2, 10),
   }
@@ -35,7 +33,7 @@ function setupDots(seed, maxTimesteps, ctx, canvasSize, canvas) {
   canvasSize = canvasSize;
   canvas = canvas;
   
-  xSpeed = randomBetween(1, 6);
+  xSpeed = randomBetween(4, 12) / 2;
   maxYVariation = randomBetween(5, 30);
   
   numDots = randomBetween(10,100);
@@ -52,7 +50,7 @@ function updateDots(dt, currentTimestep, paused) {
   for ( var i = 0; i < numDots; i++ ) {
     
     
-    dots[i].size = (dots[i].size + (randomBetween(1, 10) - 5)) / 1.5;
+    dots[i].size = (dots[i].size + (randomBetween(2, 10) - 4)) / 1.2;
 
     if ( dots[i].size < 0 ) {
       dots[i].size = 1; 

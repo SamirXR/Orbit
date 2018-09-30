@@ -2,7 +2,7 @@
 
 var projectName = "Template";
 var projectID = "template";
-var projectVersion = 1;
+var projectVersion = 3;
 
 var seed;
 var canvasID = "canvas";
