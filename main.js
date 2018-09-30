@@ -45,7 +45,7 @@ function setupAll() {
   
   setupBackground();
   
-  setupSmiles(seed, maxTimesteps, ctx, canvasSize, canvas);
+  setupDots(seed, maxTimesteps, ctx, canvasSize, canvas);
   
 }
 
@@ -84,7 +84,7 @@ function drawBackground(opacity = 1) {
 function draw() {
   
   drawBackground(0.001);
-  drawSmiles(ctx);
+  drawDots(ctx);
   
 }
 
@@ -94,7 +94,7 @@ function update() {
   currentTimestep += 1;
     
   if ( currentTimestep % 1 == 0 ) {
-      updateSmiles(dt, currentTimestep, paused);
+      updateDots(dt, currentTimestep, paused);
   }
 
   if ( currentTimestep > maxTimesteps ) {

@@ -6,14 +6,28 @@ var version = 1;
 var seed, maxTimesteps, ctx, canvasSize, canvas;
 
 // Custom variables
-var smileSize, smileColour, smilePos, colourVariation;
+var dots = [], numDots;
 
 
 function drawMetadata() {
    
 }
 
-function setupSmiles(seed, maxTimesteps, ctx, canvasSize, canvas) {
+function createDot() {
+  var dot = {
+    size: 1,
+    opacity: 0.5,
+    colour: randomNeonColour(),
+    pos: {
+      x: 0,
+      y: canvasSize.height/2
+    },
+    colourVariation: 10,
+  }
+  return dot;
+}
+
+function setupDots(seed, maxTimesteps, ctx, canvasSize, canvas) {
   // Variable setup
   seed = seed;
   maxTimesteps = maxTimesteps;
@@ -21,51 +35,62 @@ function setupSmiles(seed, maxTimesteps, ctx, canvasSize, canvas) {
   canvasSize = canvasSize;
   canvas = canvas;
   
-  smileSize = 1;
-  smileColour = randomNeonColour();
-  smilePos = {
-    x: 0,
-    y: canvasSize.height/2
-  };
+  numDots = randomBetween(1,10);
   
-  colourVariation = 10;
-}
-
-
-function updateSmiles(dt, currentTimestep, paused) {
-  smileSize = smileSize + (randomBetween(0, 20) - 10);
-  
-  if ( smileSize < 0 ) {
-    smileSize = 1; 
-  }
-  
-  smilePos.x += 1;
-  smilePos.y += randomBetween(0, 20) - 10;
-  smileColour.r += randomBetween(0, colourVariation) - colourVariation/2;
-  smileColour.g += randomBetween(0, colourVariation) - colourVariation/2;
-  smileColour.b += randomBetween(0, colourVariation) - colourVariation/2;
-  
-  if ( smileColour.r < 0 ) {
-    smileColour.r = 10;
-  } else if ( smileColour.r > 255 ) {
-    smileColour.r = 245; 
-  }
-  
-  if ( smileColour.g < 0 ) {
-    smileColour.g = 10;
-  } else if ( smileColour.g > 255 ) {
-    smileColour.g = 245; 
-  }
-  
-  if ( smileColour.b < 0 ) {
-    smileColour.b = 10;
-  } else if ( smileColour.b > 255 ) {
-    smileColour.b = 245; 
+  for ( var i = 0; i < numDots; i++ ) {
+    dots.push(createDot());  
   }
   
 }
 
 
-function drawSmiles(ctx) {
-  drawCircle(ctx, smilePos.x, smilePos.y, 0.5, smileSize, smileColour);
+function updateDots(dt, currentTimestep, paused) {
+  
+  for ( var i = 0; i < numDots; i++ ) {
+    
+    
+    dots[i].size = dots[i].size + (randomBetween(0, 20) - 10);
+
+    if ( dots[i].size < 0 ) {
+      dots[i].size = 1; 
+    }
+
+    dots[i].pos.x += 1;
+    dots[i].pos.y += randomBetween(0, 20) - 10;
+    dots[i].colour.r += randomBetween(0, dots[i].colourVariation) - dots[i].colourVariation/2;
+    dots[i].colour.g += randomBetween(0, dots[i].colourVariation) - dots[i].colourVariation/2;
+    dots[i].colour.b += randomBetween(0, dots[i].colourVariation) - dots[i].colourVariation/2;
+
+    if ( dots[i].colour.r < 0 ) {
+      dots[i].colour.r = 10;
+    } else if ( dots[i].colour.r > 255 ) {
+      dots[i].colour.r = 245; 
+    }
+
+    if ( dots[i].colour.g < 0 ) {
+      dots[i].colour.g = 10;
+    } else if ( dots[i].colour.g > 255 ) {
+      dots[i].colour.g = 245; 
+    }
+
+    if ( dots[i].colour.b < 0 ) {
+      dots[i].colour.b = 10;
+    } else if ( dots[i].colour.b > 255 ) {
+      dots[i].colour.b = 245; 
+    }
+    
+  }
+  
+  
+  
+  
+}
+
+
+function drawDots(ctx) {
+  
+  for ( var i = 0; i < numDots; i++ ) {
+    drawCircle(ctx, dots[i].pos.x, dots[i].pos.y, dots[i].opacity, dots[i].size, dots[i].colour);
+    
+  }
 }
