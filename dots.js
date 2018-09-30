@@ -6,7 +6,7 @@ var version = 1;
 var seed, maxTimesteps, ctx, canvasSize, canvas;
 
 // Custom variables
-var dots = [], numDots;
+var dots = [], numDots, xSpeed, maxYVariation;
 
 
 function drawMetadata() {
@@ -16,13 +16,13 @@ function drawMetadata() {
 function createDot() {
   var dot = {
     size: 1,
-    opacity: 0.5,
+    opacity: randomBetween(4, 9) / 10,
     colour: randomNeonColour(),
     pos: {
       x: 0,
       y: canvasSize.height/2
     },
-    colourVariation: 10,
+    colourVariation: randomBetween(2, 10),
   }
   return dot;
 }
@@ -35,7 +35,10 @@ function setupDots(seed, maxTimesteps, ctx, canvasSize, canvas) {
   canvasSize = canvasSize;
   canvas = canvas;
   
-  numDots = randomBetween(1,10);
+  xSpeed = randomBetween(1, 10);
+  maxYVariation = randomBetween(5, 30);
+  
+  numDots = randomBetween(10,100);
   
   for ( var i = 0; i < numDots; i++ ) {
     dots.push(createDot());  
@@ -49,17 +52,17 @@ function updateDots(dt, currentTimestep, paused) {
   for ( var i = 0; i < numDots; i++ ) {
     
     
-    dots[i].size = dots[i].size + (randomBetween(0, 20) - 10);
+    dots[i].size = (dots[i].size + (randomBetween(1, 10) - 5)) / 1.5;
 
     if ( dots[i].size < 0 ) {
       dots[i].size = 1; 
     }
 
-    dots[i].pos.x += 1;
-    dots[i].pos.y += randomBetween(0, 20) - 10;
-    dots[i].colour.r += randomBetween(0, dots[i].colourVariation) - dots[i].colourVariation/2;
-    dots[i].colour.g += randomBetween(0, dots[i].colourVariation) - dots[i].colourVariation/2;
-    dots[i].colour.b += randomBetween(0, dots[i].colourVariation) - dots[i].colourVariation/2;
+    dots[i].pos.x += xSpeed;
+    dots[i].pos.y += randomBetween(1, maxYVariation) - maxYVariation / 2;
+    dots[i].colour.r += randomBetween(1, dots[i].colourVariation) - dots[i].colourVariation/2;
+    dots[i].colour.g += randomBetween(1, dots[i].colourVariation) - dots[i].colourVariation/2;
+    dots[i].colour.b += randomBetween(1, dots[i].colourVariation) - dots[i].colourVariation/2;
 
     if ( dots[i].colour.r < 0 ) {
       dots[i].colour.r = 10;
