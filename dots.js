@@ -18,7 +18,7 @@ function createDot() {
     colour: randomNeonColour(),
     pos: {
       x: 0,
-      y: randomBetween(canvasSize.height/2, canvasSize.height/4),
+      y: randomBetween(canvasSize.height*0.25, canvasSize.height*0.75),
     },
     colourVariation: randomBetween(2, 10),
   }
