@@ -15,7 +15,7 @@ body {
   width: 90%;
   max-width: 68em;
   margin: 0 auto;
-  padding: 1.5rem;
+  padding: 0.5rem;
 }
 
 
@@ -55,4 +55,10 @@ button:hover, button:focus {
   background-color: yellow;
   color: black;
   border-color: black;
+}
+
+button#reseed {
+  position: fixed;
+  left: 1.2rem;
+  top: 1.2rem;
 }

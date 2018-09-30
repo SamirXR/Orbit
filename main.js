@@ -33,7 +33,7 @@ function setupAll() {
     
    canvasSize = {
 		width: 1000,
-		height: 450
+		height: 550
 	};
   
 	var container = $("#canvas-container");
