@@ -35,7 +35,7 @@ function setupDots(seed, maxTimesteps, ctx, canvasSize, canvas) {
   canvasSize = canvasSize;
   canvas = canvas;
   
-  xSpeed = randomBetween(1, 10);
+  xSpeed = randomBetween(1, 6);
   maxYVariation = randomBetween(5, 30);
   
   numDots = randomBetween(10,100);
