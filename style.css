@@ -1,11 +1,19 @@
 /* CSS files add styling rules to your content */
 
 body {
-  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  font-family: "K2D", "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
   margin: 2em;
 }
 
-h1 {
-  font-style: italic;
-  color: #373fff;
+
+.container {
+  width: 90%;
+  max-width: 68em;
+  margin: 0 auto;
+  padding: 1.5rem;
 }
+
+
+
+/* Coloured sections */
+.
