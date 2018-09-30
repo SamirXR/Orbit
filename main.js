@@ -45,9 +45,29 @@ function setupAll() {
   
   setupBackground();
   
-  setupSmiles(seed, maxTimesteps, canvasSize, canvas);
+  setupSmiles(seed, maxTimesteps, ctx, canvasSize, canvas);
   
 }
+
+
+
+
+function init(seed) {
+    
+  canvas = document.getElementById(canvasID);
+	ctx = canvas.getContext('2d');
+  ctx.translate(0, 0);
+  ctx.moveTo(0, 0);
+
+  setupAll();    
+	clearCanvas(ctx);
+
+  drawBackground(1);
+  
+  window.requestAnimationFrame(main);
+  
+}
+
 
 
 function drawBackground(opacity = 1) {
@@ -60,27 +80,7 @@ function drawBackground(opacity = 1) {
 
 
 
-
-
-function init(seed) {
-    
-  canvas = document.getElementById(canvasID);
-	ctx = canvas.getContext('2d');
-  ctx.translate(0, 0);
-  ctx.moveTo(0, 0);
-  
-  setupAll();    
-	clearCanvas(ctx);
-
-  drawBackground(1);  
-
-}
-
-
-
 function draw() {
-  
-  drawBackground(0.001);
   
   drawSmiles();
   
@@ -100,6 +100,20 @@ function update() {
   }  
 }
 
+
+
+function main() {
+	if (!paused) {
+		update();
+		draw();
+		if (currentTimestep < maxTimesteps) {
+			currentTimestep++;
+			window.requestAnimationFrame(main);	
+		} else {
+			console.log("COMPLETE");
+		}
+	}
+}
 
 
 
