@@ -56,6 +56,7 @@ function init(seed) {
     
   canvas = document.getElementById(canvasID);
 	ctx = canvas.getContext('2d');
+  ctx.globalAlpha = 1;
   ctx.translate(0, 0);
   ctx.moveTo(0, 0);
 
@@ -82,7 +83,8 @@ function drawBackground(opacity = 1) {
 
 function draw() {
   
-  drawSmiles();
+  drawBackground(0.001);
+  drawSmiles(ctx);
   
 }
 
