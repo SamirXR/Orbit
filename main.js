@@ -1,6 +1,7 @@
 // Base variables
 
 var projectName = "Template";
+var projectID = "template";
 var projectVersion = 1;
 
 var seed;
@@ -140,6 +141,9 @@ $(document).ready(function() {
   });
   
   $("#download-link").click(function() {
+    
+    $("#download-link").attr("download", "n-schede_" + projectID + "-v" + projectVersion + "_s" + seed + "_t" + currentTimestep );
+    
     var image = canvas.toDataURL("image/png");
     this.href = image;
   });

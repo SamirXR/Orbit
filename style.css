@@ -3,6 +3,9 @@
 * {
   font-family: "K2D", "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif; 
 }
+button, button a {
+  font-family: "Cutive Mono", sans-serif; 
+}
 
 body {
   margin: 0;
