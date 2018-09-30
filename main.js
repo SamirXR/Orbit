@@ -136,8 +136,10 @@ $(document).ready(function() {
     window.location.href = window.location.pathname + window.location.search + window.location.hash;
   });
   
-  $("#download").click(function() {
-    
+  $("#download-link").click(function() {
+    var image = canvas.toDataURL("image/png");
+    this.href = image;
   });
+
   
 });

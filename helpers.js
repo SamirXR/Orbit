@@ -175,6 +175,8 @@ function randomLightColour() {
 
 
 
+
+
 // Other helpers
 
 function shuffle(array) {
@@ -195,4 +197,7 @@ function shuffle(array) {
 
   return array;
 }
+
+
+
 

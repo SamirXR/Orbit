@@ -51,13 +51,22 @@ button {
   transition: all 0.2s;
 }
 
+button a {
+  color: white;
+  text-decoration: none;
+}
+
 button:hover, button:focus {
   background-color: yellow;
   color: black;
   border-color: black;
 }
 
-button#reseed {
+button:hover a, button:focus a {
+  color: black; 
+}
+
+.buttons {
   position: fixed;
   left: 1.2rem;
   top: 1.2rem;
