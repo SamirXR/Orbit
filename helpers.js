@@ -14,17 +14,32 @@ function difference(x, y) {
 
 // Seed helpers
 
-var workingSeed;
+var initialSeed, workingSeed;
 
 var seedRange = 10000;
 
 function initSeedSystem() {
-    workingSeed = Math.floor(Math.random() * Math.floor(seedRange));
+    initialSeed = generateSeed();
+    workingSeed = initialSeed;
 }
 
 function generateSeed() {
-	var result = Math.floor(Math.random() * seedRange); // This is the only place where Math.random should be used. After the seed is generated, use random() instead.
-    //console.log("SEED: ", result);
+  
+  var result;
+  
+  // Make sure there's no seed in the URL
+  var urlParams = new URLSearchParams(window.location.search);
+  var urlSeed = urlParams.get('s');
+  if (urlSeed > 0) {
+      result = urlSeed;
+  } else {
+    result = Math.floor(Math.random() * Math.floor(seedRange)); // This is the only place where Math.random should be used. After the seed is generated, use random() instead.
+    // Add the seed as a URL parameter
+    var url = document.location.href+"?s="+result;
+    document.location = url;
+
+  }
+	
 	return result;
 }
 

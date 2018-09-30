@@ -133,7 +133,9 @@ $(document).ready(function() {
   
   $("#reseed").click(function() {
     // TODO: reseed without refreshing whole page
-    window.location.href = window.location.pathname + window.location.search + window.location.hash;
+    var url = document.location.href+"?s="+"0";
+    console.log("URL:", url);
+    document.location = url;
   });
   
   $("#download-link").click(function() {
