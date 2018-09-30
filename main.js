@@ -18,7 +18,7 @@ function clearCanvas() {
 
 
 function setupBackground() {
-  bg = randomColour();
+  bg = randomDarkColour();
 }
 
 

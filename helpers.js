@@ -69,7 +69,7 @@ function randomTinyVariation(startingPoint) {
 
 // Colour helpers
 
-function getNeonColour(variant = randomBetween(1, 6)) {
+function randomNeonColour(variant = randomBetween(1, 6)) {
     
     var maxJiggle = randomBetween(0, 15);
     

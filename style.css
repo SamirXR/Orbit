@@ -1,7 +1,10 @@
 /* General */
 
+* {
+  font-family: "K2D", "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif; 
+}
+
 body {
-  font-family: "K2D", "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
   margin: 0;
 }
 
@@ -34,4 +37,22 @@ body {
 .bg-black {
   background-color: #121112;
   color: #efefef;
+}
+
+
+/* Buttons */
+
+button {
+  cursor: pointer; 
+  background-color: blue;
+  color: white;
+  border: 1px solid white;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+button:hover, button:focus {
+  background-color: yellow;
+  color: black;
+  border-color: black;
 }
