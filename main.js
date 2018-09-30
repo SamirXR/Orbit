@@ -1,7 +1,6 @@
-// TEMPLATE FILE
-
-
 // Base variables
+
+var projectName = "Template";
 
 var initialSeed, seed;
 var canvasID = "canvas";
@@ -26,6 +25,7 @@ function setupBackground() {
 }
 
 
+
 function setupAll() {
  
   // Base variable setup
@@ -35,8 +35,8 @@ function setupAll() {
 	maxTimesteps = 50000;
     
    canvasSize = {
-		width: 2000,
-		height: 800
+		width: 1000,
+		height: 450
 	};
   
 	var container = $("#canvas-container");
@@ -60,7 +60,7 @@ function drawBackground(opacity = 1) {
 
 
 
-function init(seed = generateSeed()) {
+function init(seed) {
     
   canvas = document.getElementById(canvasID);
 	ctx = canvas.getContext('2d');
@@ -69,7 +69,7 @@ function init(seed = generateSeed()) {
   
   setupAll();
 
-	setupSmiles(seed, dt, currentTimestep, paused, maxTimesteps, canvasSize, canvas);
+	//setupSmiles(seed, dt, currentTimestep, paused, maxTimesteps, canvasSize, canvas);
   
     
 	clearCanvas(ctx);
@@ -92,6 +92,10 @@ function init(seed = generateSeed()) {
 
 $(document).ready(function() { 
   
+  seed = generateSeed();
   init();
+  
+  $("#seed-label").html(seed);
+  $("#project-name").html(projectName);
   
 });

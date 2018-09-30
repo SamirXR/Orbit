@@ -1,6 +1,5 @@
 // Metadata
-var algoName = "smile";
-var algoVersion = 1;
+var version = 1;
 
 // Custom variables
 
