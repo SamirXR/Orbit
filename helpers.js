@@ -35,8 +35,11 @@ function generateSeed() {
   } else {
     result = Math.floor(Math.random() * Math.floor(seedRange)); // This is the only place where Math.random should be used. After the seed is generated, use random() instead.
     // Add the seed as a URL parameter
-    var url = document.location.href+"?s="+result;
-    document.location = url;
+    
+    var url = document.location.href;
+    var urlWithoutParams = url.split("?")[0];
+    var urlWithSeed = urlWithoutParams + "?s=" + result;
+    window.history.pushState("s", result, urlWithSeed);    
 
   }
 	

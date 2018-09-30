@@ -133,9 +133,10 @@ $(document).ready(function() {
   
   $("#reseed").click(function() {
     // TODO: reseed without refreshing whole page
-    var url = document.location.href+"?s="+"0";
-    console.log("URL:", url);
-    document.location = url;
+    var url = document.location.href;
+    var urlWithoutParams = url.split("?")[0];
+    var urlWithoutSeed = urlWithoutParams;
+    document.location = urlWithoutSeed;
   });
   
   $("#download-link").click(function() {
