@@ -18,8 +18,8 @@ var workingSeed;
 
 var seedRange = 10000;
 
-function initSeedSystem(seed) {
-    workingSeed = seed;
+function initSeedSystem() {
+    workingSeed = Math.floor(Math.random() * Math.floor(seedRange);
 }
 
 function generateSeed() {
@@ -38,9 +38,11 @@ function random() {
 }
 
 function randomBetween(min, max) {
+  console.log("random between: ", min, ", ", max);
 	// TODO: don't assume it's an int
 	var range = max - min;
 	var result = Math.floor(random() * range) + min;
+  console.log(result);
 	return result;
 }
 
@@ -134,6 +136,7 @@ function randomColour() {
     g: g,
     b: b
   }
+  console.log("RANDOMC OLOUR: ", colour);
   return colour;
 }
 

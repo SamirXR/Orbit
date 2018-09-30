@@ -1,23 +1,27 @@
 // Metadata
 var version = 1;
 
-// Custom variables
+// Variables
+// TODO: aren't these global?
+var seed, maxTimesteps, canvasSize, canvas;
 
 
 function drawMetadata() {
    
 }
 
-function setupSmiles(seed, dt, currentTimestep, paused, maxTimesteps, canvasSize, canvas) {
-    
-  // Custom variable setup
-    
+function setupSmiles(seed, maxTimesteps, canvasSize, canvas) {
+  // Variable setup
+  seed = seed;
+  maxTimesteps = maxTimesteps;
+  canvasSize = canvasSize;
+  canvas = canvas;
     
 }
 
 
 
-function updateSmiles() {
+function updateSmiles(dt, currentTimestep, paused) {
   
 }
 

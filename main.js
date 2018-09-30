@@ -2,7 +2,7 @@
 
 var projectName = "Template";
 
-var initialSeed, seed;
+var seed;
 var canvasID = "canvas";
 var ctx, canvas, canvasSize;
 var bg;
@@ -17,11 +17,7 @@ function clearCanvas() {
 
 
 function setupBackground() {
-  bg = {
-		r: randomBetween(0,255),
-		g: randomBetween(0,255),
-		b: randomBetween(0,255),
-	};  
+  bg = randomColour();
 }
 
 
@@ -43,7 +39,12 @@ function setupAll() {
 	canvas.width = canvasSize.width;
 	canvas.height = canvasSize.height;
   
+  
+  initSeedSystem();
+  
   setupBackground();
+  
+  setupSmiles(seed, maxTimesteps, canvasSize, canvas);
   
 }
 
@@ -68,18 +69,11 @@ function init(seed) {
   ctx.moveTo(0, 0);
   
   setupAll();
-
-	//setupSmiles(seed, dt, currentTimestep, paused, maxTimesteps, canvasSize, canvas);
-  
     
 	clearCanvas(ctx);
-  ctx.translate(canvasSize.width/2, canvasSize.height/2);
+  //ctx.translate(canvasSize.width/2, canvasSize.height/2);
 
-  //window.requestAnimationFrame(main);
-  
-  //drawBackgroundGradient(0.3);
-  drawBackground(0.9);
-  
+  drawBackground(1);  
 
 }
 
