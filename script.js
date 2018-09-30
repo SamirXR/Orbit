@@ -6,6 +6,26 @@
 var initialSeed;
 var canvasID = "canvas";
 var ctx, canvas, canvasSize;
+var bg = {r: 0, g: 0, b: 0};
+
+
+
+
+
+function clearCanvas() {
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+
+function drawBackground(opacity = 1) {
+  var oldAlpha = ctx.globalAlpha;
+  ctx.globalAlpha = opacity;
+	ctx.fillStyle = 'rgb(' + bg.r + ', ' + bg.g + ', ' + bg.b + ')';	
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.globalAlpha = oldAlpha;
+}
+
+
 
 
 
