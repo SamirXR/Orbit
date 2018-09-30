@@ -19,6 +19,7 @@ function clearCanvas() {
 
 function setupBackground() {
   bg = randomNeonColour();
+  $("html").css("background-color", "rgb(" + bg.r + "," + bg.g + "," + bg.b + ")");
 }
 
 
@@ -33,7 +34,7 @@ function setupAll() {
     
    canvasSize = {
 		width: 1000,
-		height: 550
+		height: 400
 	};
   
 	var container = $("#canvas-container");
@@ -133,6 +134,10 @@ $(document).ready(function() {
   $("#reseed").click(function() {
     // TODO: reseed without refreshing whole page
     window.location.href = window.location.pathname + window.location.search + window.location.hash;
+  });
+  
+  $("#download").click(function() {
+    
   });
   
 });

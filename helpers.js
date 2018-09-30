@@ -24,7 +24,7 @@ function initSeedSystem() {
 
 function generateSeed() {
 	var result = Math.floor(Math.random() * seedRange); // This is the only place where Math.random should be used. After the seed is generated, use random() instead.
-    console.log("SEED: ", result);
+    //console.log("SEED: ", result);
 	return result;
 }
 

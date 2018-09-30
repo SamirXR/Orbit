@@ -3,10 +3,11 @@
 #canvas-container {
   margin: 0;
   width: 100%;
+  background-color: transparent;
 }
 
 /* Inner */
 #canvas {
-  background-color: #f6f6f6;
+  background-color: transparent;
   width: 100%;
 }
