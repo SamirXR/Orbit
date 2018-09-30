@@ -2,7 +2,7 @@
 /* Outer */
 #canvas-container {
   width: 100%;
-  margin-bottom: 2rem; 
+  margin: 2rem 0;
 }
 
 /* Inner */

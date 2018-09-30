@@ -1,5 +1,8 @@
-/* If you're feeling fancy you can add interactivity 
-    to your site with Javascript */
+// Base variables
+var initialSeed;
+var canvasID = "canvas";
+var ctx, canvas, canvasSize;
 
-// prints "hi" in the browser's dev tools console
-console.log('hi');
+
+
+// Custom variables
