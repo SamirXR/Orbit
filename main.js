@@ -31,7 +31,7 @@ function setupAll() {
 	dt = 1;
 	currentTimestep = 1;
 	paused = false;
-	maxTimesteps = 500000;
+	maxTimesteps = 50000000;
     
    canvasSize = {
 		width: 700,

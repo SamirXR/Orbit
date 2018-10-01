@@ -13,9 +13,11 @@ function drawMetadata() {
 
 function createSatellite(x, y) {
   
-  if ( currentNumSatellites < maxNumSatellites ) {
+  //if ( currentNumSatellites < maxNumSatellites ) {
     var satellite = {
       size: 1,
+      growthSpeed: randomBetween(1, 5) / 10,
+      fadeSpeed: randomBetween(1, 10) / 10000,
       active: true,
       opacity: randomBetween(4, 9) / 10,
       colour: randomNeonColour(),
@@ -29,7 +31,7 @@ function createSatellite(x, y) {
     satellites.push(satellite); 
     currentNumSatellites++;
   }
-}
+//}
 
 function setupMass() {
   mass = {
@@ -37,14 +39,14 @@ function setupMass() {
       x: canvasSize.width/2,
       y: canvasSize.height/2,
     },
-    size: randomBetween(50, 200),
-    fillColour: randomLightColour(),
+    size: randomBetween(1, 100),
+    fillColour: randomNeonColour(),
     strokeColour: randomLightColour(),
   };
 }
 
 function setupLeader() {
-  var distanceFromMass = randomBetween(220, 500);
+  var distanceFromMass = randomBetween(100, 200);
   leader = {
     distanceFromMass: distanceFromMass,
     speed: 1,
@@ -54,6 +56,8 @@ function setupLeader() {
     },
     size: 10,
     fillColour: randomLightColour(),
+    theta: randomBetween(1, 10) / 10,
+    speed: 0.05,
   }
 }
 
@@ -68,10 +72,7 @@ function setupSatellites(seed, maxTimesteps, ctx, canvasSize, canvas) {
   canvasSize = canvasSize;
   canvas = canvas;
   
-  xSpeed = randomBetween(4, 12) / 2;
-  maxYVariation = randomBetween(5, 30);
-  
-  maxNumSatellites = randomBetween(10,100);
+  //maxNumSatellites = randomBetween(100,10000);
   currentNumSatellites = 0;
   
   
@@ -80,15 +81,20 @@ function setupSatellites(seed, maxTimesteps, ctx, canvasSize, canvas) {
 
 function updateLeader(dt) {
 
-  leader.theta1 += outerCurves[i].speed1 / 4;
-  leader.theta2 += outerCurves[i].speed2 / 4 ;
+  leader.theta += leader.speed / 4;
+ // leader.theta2 += leader.speed2 / 4 ;
 
-  outerCurves[i].pos1.x = createCurveX(outerCircleGuide.radius, outerCurves[i].theta1, canvas.width/4);
-  outerCurves[i].pos1.y = createCurveY(outerCircleGuide.radius, outerCurves[i].theta1, canvas.height/4)
+  leader.pos.x = calculateOrbitX(leader.distanceFromMass, leader.theta, canvas.width/2);
+  leader.pos.y = calculateOrbitY(leader.distanceFromMass, leader.theta, canvas.height/2)
 
-  outerCurves[i].pos2.x = createCurveX(outerCircleGuide.radius, outerCurves[i].theta2, canvas.width/4);
-  outerCurves[i].pos2.y = createCurveY(outerCircleGuide.radius, outerCurves[i].theta2, canvas.height/4);
+  //leader.pos2.x = calculateOrbitX(outerCircleGuide.radius, leader.theta2, canvas.width/4);
+  //leader.pos2.y = calculateOrbitY(outerCircleGuide.radius, leader.theta2, canvas.height/4);
 
+  //if ( currentNumSatellites < maxNumSatellites ) {
+    if ( true ) {
+      createSatellite(leader.pos.x, leader.pos.y); 
+    }  
+  //}
   
   
 }
@@ -102,8 +108,8 @@ function updateSatellites(dt, currentTimestep, paused) {
   
   for ( var i = 0; i < currentNumSatellites; i++ ) {
     if ( satellites[i].active ) {
-      satellites[i].opacity -= 0.01;
-      satellites[i].size += 1;
+      satellites[i].opacity -= satellites[i].fadeSpeed;
+      satellites[i].size += satellites[i].growthSpeed;
 
       if ( satellites[i].opacity < 0 ) {
         satellites[i].active = false; 
@@ -122,13 +128,9 @@ function drawMass() {
 
 
 function drawLeader() {
-  drawCircle(ctx, leader.pos.x, leader.pos.y, 1, leader.size, leader.fillColour);
+  //drawCircle(ctx, leader.pos.x, leader.pos.y, 1, leader.size, leader.fillColour);
   
-  if ( currentNumSatellites < maxNumSatellites ) {
-    if ( randomBetween(1, 10) == 5 ) {
-      createSatellite(leader.pos.x, leader.pos.y); 
-    }  
-  }
+  
   
   
 }
