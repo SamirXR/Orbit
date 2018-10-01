@@ -85,7 +85,6 @@ function drawBackground(opacity = 1) {
 
 function draw() {
   
-  //drawBackground(0.001);
   drawSatellites(ctx);
   
 }

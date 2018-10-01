@@ -70,6 +70,7 @@ function drawCircle(ctx, x, y, opacity, diameter, colour = {r: 255, g: 255, b: 2
 
 function drawBox(ctx, x, y, w, h, fillColour = {r: 255, g: 255, b: 255}, strokeColour = {r: 0, g: 0, b: 0}, fill = true, stroke = false, fillOpacity = 1, strokeOpacity = 1, lineWidth = 5) {
 
+  
 		ctx.save();
 		ctx.translate(x, y);
         

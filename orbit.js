@@ -3,9 +3,8 @@
 var seed, maxTimesteps, ctx, canvasSize, canvas;
 
 // Custom variables
-var mass; // The thing t
-var satellites = [], numSatellites;
-
+var mass; // The thing the satellites orbit
+var satellites = [], numSatellites; // The things orbiting the mass
 
 function drawMetadata() {
    
@@ -27,7 +26,15 @@ function createSatellite() {
 }
 
 function setupMass() {
-  
+  mass = {
+    pos: {
+      x: canvasSize.width/2,
+      y: canvasSize.height/2,
+    },
+    size: randomBetween(50, 200),
+    fillColour: randomLightColour(),
+    strokeColour: randomLightColour(),
+  };
 }
 
 function setupSatellites(seed, maxTimesteps, ctx, canvasSize, canvas) {
@@ -61,6 +68,18 @@ function updateSatellites(dt, currentTimestep, paused) {
 }
 
 
+function drawMass() {
+  //drawBox(ctx, mass.pos.x, mass.pos.y, mass.size, mass.size, mass.fillColour, mass.strokeColour, true, true, 1, 1, 5); 
+  drawCircle(ctx, mass.pos.x, mass.pos.y, 1, mass.size, mass.fillColour);
+  
+}
+
+
 function drawSatellites(ctx) {
+  
+  drawMass();
+  for ( var i = 0; i < numSatellites; i++ ) {
+     
+  }
   
 }
