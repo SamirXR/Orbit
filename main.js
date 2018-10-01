@@ -1,7 +1,7 @@
 // Base variables
 
-var projectName = "WIP";
-var projectID = "wip";
+var projectName = "Orbit";
+var projectID = "orbit";
 var projectVersion = 0; // -> 1
 
 var seed;
@@ -19,7 +19,7 @@ function clearCanvas() {
 
 
 function setupBackground() {
-  bg = randomNeonColour();
+  bg = randomDarkColour();
   $("html").css("background-color", "rgb(" + bg.r + "," + bg.g + "," + bg.b + ")");
 }
 
@@ -47,7 +47,7 @@ function setupAll() {
   
   setupBackground();
   
-  setupDots(seed, maxTimesteps, ctx, canvasSize, canvas);
+  setupSatellites(seed, maxTimesteps, ctx, canvasSize, canvas);
   
 }
 
@@ -85,8 +85,8 @@ function drawBackground(opacity = 1) {
 
 function draw() {
   
-  drawBackground(0.001);
-  drawDots(ctx);
+  //drawBackground(0.001);
+  drawSatellites(ctx);
   
 }
 
@@ -96,7 +96,7 @@ function update() {
   currentTimestep += 1;
     
   if ( currentTimestep % 1 == 0 ) {
-      updateDots(dt, currentTimestep, paused);
+      updateSatellites(dt, currentTimestep, paused);
   }
 
   if ( currentTimestep > maxTimesteps ) {

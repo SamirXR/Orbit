@@ -136,7 +136,7 @@ function randomMidColourNumber() {
 }
 
 function randomDarkColourNumber() {
-	return randomBetween(0, 100);
+	return randomBetween(0, 40);
 }
 
 function randomLightColourNumber() {
