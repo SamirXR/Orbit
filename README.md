@@ -1,10 +1,9 @@
-Template
+Orbit
 =================
 
-WIP generative art template
+Make a lil spacey flower thing. Code by n–schedé
 
+Third-party assets
+------------------
 
-Assets
-------
-
-* Zepto: https://zeptojs.com/
+* [Zepto](https://zeptojs.com/)
