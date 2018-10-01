@@ -31,7 +31,7 @@ function setupAll() {
 	dt = 1;
 	currentTimestep = 1;
 	paused = false;
-	maxTimesteps = 50000;
+	maxTimesteps = 500000;
     
    canvasSize = {
 		width: 700,
@@ -85,6 +85,7 @@ function drawBackground(opacity = 1) {
 
 function draw() {
   
+  drawBackground(0.5);
   drawSatellites(ctx);
   
 }

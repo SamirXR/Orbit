@@ -13,18 +13,22 @@ function drawMetadata() {
 
 function createSatellite(x, y) {
   
-  var satellite = {
-    size: 1,
-    active: true,
-    opacity: randomBetween(4, 9) / 10,
-    colour: randomNeonColour(),
-    pos: {
-      x: x,
-      y: y,
-    },
-    fillColour: randomNeonColour()
+  if ( currentNumSatellites < maxNumSatellites ) {
+    var satellite = {
+      size: 1,
+      active: true,
+      opacity: randomBetween(4, 9) / 10,
+      colour: randomNeonColour(),
+      pos: {
+        x: x,
+        y: y,
+      },
+      fillColour: randomNeonColour()
+    }
+
+    satellites.push(satellite); 
+    currentNumSatellites++;
   }
-  return satellite;
 }
 
 function setupMass() {
@@ -74,13 +78,32 @@ function setupSatellites(seed, maxTimesteps, ctx, canvasSize, canvas) {
 }
 
 
+function updateLeader(dt) {
+
+  leader.theta1 += outerCurves[i].speed1 / 4;
+  leader.theta2 += outerCurves[i].speed2 / 4 ;
+
+  outerCurves[i].pos1.x = createCurveX(outerCircleGuide.radius, outerCurves[i].theta1, canvas.width/4);
+  outerCurves[i].pos1.y = createCurveY(outerCircleGuide.radius, outerCurves[i].theta1, canvas.height/4)
+
+  outerCurves[i].pos2.x = createCurveX(outerCircleGuide.radius, outerCurves[i].theta2, canvas.width/4);
+  outerCurves[i].pos2.y = createCurveY(outerCircleGuide.radius, outerCurves[i].theta2, canvas.height/4);
+
+  
+  
+}
+
+
 function updateSatellites(dt, currentTimestep, paused) {
   
+  if ( !paused ) {
+    updateLeader(dt);
+  }
   
   for ( var i = 0; i < currentNumSatellites; i++ ) {
     if ( satellites[i].active ) {
       satellites[i].opacity -= 0.01;
-      satellites[i].size += 0.01;
+      satellites[i].size += 1;
 
       if ( satellites[i].opacity < 0 ) {
         satellites[i].active = false; 
@@ -103,7 +126,7 @@ function drawLeader() {
   
   if ( currentNumSatellites < maxNumSatellites ) {
     if ( randomBetween(1, 10) == 5 ) {
-      createSatellite(leader.x, leader.y); 
+      createSatellite(leader.pos.x, leader.pos.y); 
     }  
   }
   
@@ -117,8 +140,17 @@ function drawSatellites(ctx) {
   
   for ( var i = 0; i < currentNumSatellites; i++ ) {
     if ( satellites[i].active ) {
-       drawCircle(ctx, satellites[i].pos.x, satellites[i].pos.y, 1, satellites[i].size, satellites[i].fillColour);
+       drawCircle(ctx, satellites[i].pos.x, satellites[i].pos.y, satellites[i].opacity, satellites[i].size, satellites[i].fillColour);
     }
   }
   
+}
+
+
+function calculateOrbitX(radius, theta, offset) {
+    return radius * Math.cos(theta) + offset;
+}
+
+function calculateOrbitY(radius, theta, offset) {
+    return radius * Math.sin(theta) + offset;
 }
