@@ -1,8 +1,8 @@
 // Base variables
 
-var projectName = "Template";
-var projectID = "template";
-var projectVersion = 0; // -> 4
+var projectName = "WIP";
+var projectID = "wip";
+var projectVersion = 0; // -> 1
 
 var seed;
 var canvasID = "canvas";
@@ -34,8 +34,8 @@ function setupAll() {
 	maxTimesteps = 50000;
     
    canvasSize = {
-		width: 1000,
-		height: 500
+		width: 700,
+		height: 700
 	};
   
 	var container = $("#canvas-container");
