@@ -2,7 +2,7 @@
 
 var projectName = "Orbit";
 var projectID = "orbit";
-var projectVersion = 0; // -> 1
+var projectVersion = 1;
 
 var seed;
 var canvasID = "canvas";
@@ -85,7 +85,7 @@ function drawBackground(opacity = 1) {
 
 function draw() {
   
-  drawBackground(0.5);
+  drawBackground(1);
   drawSatellites(ctx);
   
 }

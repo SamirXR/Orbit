@@ -39,8 +39,8 @@ function setupMass() {
       x: canvasSize.width/2,
       y: canvasSize.height/2,
     },
-    size: randomBetween(1, 100),
-    fillColour: randomNeonColour(),
+    size: randomBetween(50, 200),
+    fillColour: randomDarkColour(),
     strokeColour: randomLightColour(),
   };
 }
@@ -48,16 +48,16 @@ function setupMass() {
 function setupLeader() {
   var distanceFromMass = randomBetween(100, 200);
   leader = {
-    distanceFromMass: distanceFromMass,
-    speed: 1,
+    distanceFromMass: distanceFromMass * randomSign(),
+    speed: randomBetween(1, 10) / 2,
     pos: {
-      x: distanceFromMass,
-      y: distanceFromMass,
+      x: distanceFromMass * randomSign(),
+      y: distanceFromMass * randomSign(),
     },
-    size: 10,
+    size: 1,
     fillColour: randomLightColour(),
     theta: randomBetween(1, 10) / 10,
-    speed: 0.05,
+    speed: randomBetween(1, 10) / 100,
   }
 }
 
@@ -81,14 +81,10 @@ function setupSatellites(seed, maxTimesteps, ctx, canvasSize, canvas) {
 
 function updateLeader(dt) {
 
-  leader.theta += leader.speed / 4;
- // leader.theta2 += leader.speed2 / 4 ;
+  leader.theta += leader.speed / randomBetween(1, 3);
 
   leader.pos.x = calculateOrbitX(leader.distanceFromMass, leader.theta, canvas.width/2);
   leader.pos.y = calculateOrbitY(leader.distanceFromMass, leader.theta, canvas.height/2)
-
-  //leader.pos2.x = calculateOrbitX(outerCircleGuide.radius, leader.theta2, canvas.width/4);
-  //leader.pos2.y = calculateOrbitY(outerCircleGuide.radius, leader.theta2, canvas.height/4);
 
   //if ( currentNumSatellites < maxNumSatellites ) {
     if ( true ) {
@@ -130,14 +126,10 @@ function drawMass() {
 function drawLeader() {
   //drawCircle(ctx, leader.pos.x, leader.pos.y, 1, leader.size, leader.fillColour);
   
-  
-  
-  
 }
 
 function drawSatellites(ctx) {
   
-  drawMass();
   drawLeader(); // Only for debug
   
   for ( var i = 0; i < currentNumSatellites; i++ ) {
@@ -145,6 +137,9 @@ function drawSatellites(ctx) {
        drawCircle(ctx, satellites[i].pos.x, satellites[i].pos.y, satellites[i].opacity, satellites[i].size, satellites[i].fillColour);
     }
   }
+  
+  drawMass();
+  
   
 }
 
