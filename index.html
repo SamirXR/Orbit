@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    
     <title>Orbit</title>
-    
-    <meta charset="utf-8">
+
+    <meta charset="utf-8" />
     <link
       rel="icon"
       href="https://cdn.discordapp.com/attachments/913760038361890867/931879891417317386/show.png"
     />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    
+    <meta
+      name="description"
+      content="Hello,It's a Space flower thingy built on Canvas"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <!-- CSS -->
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/canvas.css">
-    
-    
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/canvas.css" />
+
     <!-- JavaScript: essential libraries -->
     <script src="/helpers.js" defer></script>
     <script src="/zepto.min.js" defer></script>
@@ -28,49 +29,43 @@
     <!-- JavaScript: logic -->
     <script src="/orbit.js" defer></script>
     <script src="/main.js" defer></script>
-    
-    
+
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-    
-    
-  </head>  
+    <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Mono"
+      rel="stylesheet"
+    />
+  </head>
   <body>
-    
     <main>
-    
-      
-      
       <section>
-        
         <div id="canvas-container">
           <canvas id="canvas"></canvas>
         </div>
 
-        <div class="container">  
+        <div class="container">
           <!--<p>
             <span id="project-name">Unknown project</span> v<span id="project-version">0</span><br/>
             Seed <span id="seed-label">No seed</span> <button id="reseed">Random</button>
           </p>-->
-          
+
           <div class="buttons">
             <button id="reseed">Randomise</button>
-            <button id="download"><a id="download-link" href="" download="n-schede.png">Save</a></button>
+            <button id="download">
+              <a id="download-link" href="" download="n-schede.png">Save</a>
+            </button>
           </div>
-          
         </div>
-        
       </section>
-    
     </main>
 
-    
-    
-    
     <!-- include the Glitch button to show what the webpage is about and
           to make it easier for folks to view source and remix -->
-    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <div
+      class="glitchButton"
+      style="position: fixed; top: 20px; right: 20px"
+    ></div>
     <script src="https://button.glitch.me/button.js"></script>
   </body>
 </html>

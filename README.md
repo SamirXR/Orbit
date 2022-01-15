@@ -4,7 +4,10 @@ Space flower thingy :)
 
 `Live Demo` : [Click here](https://orbitt.glitch.me/)
 
-I Made this thingy 
+- Just click on `Randomiser` to change color
+
+- Just click on `Save` to download the picture in `PNG` Format
+
 Made using Html,Css & JavaScript
 
 <a href="https://discord.gg/P9gGZaXWGR">
