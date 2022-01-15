@@ -1,9 +1,12 @@
-Orbit
-=================
+# Orbit : )
 
-Make a lil spacey flower thing. Code by n–schedé
+Space flower thingy :)
 
-Third-party assets
-------------------
+`Live Demo` : [Click here](https://orbitt.glitch.me/)
 
-* [Zepto](https://zeptojs.com/)
+I Made this thingy 
+Made using Html,Css & JavaScript
+
+<a href="https://discord.gg/P9gGZaXWGR">
+    <img src="https://discordapp.com/api/guilds/913750761924591666/widget.png?style=shield" alt="Discord Server">
+  </a>
